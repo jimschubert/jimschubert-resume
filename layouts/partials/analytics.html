@@ -1,11 +1,3 @@
-{{- if .AnalyticsID -}}
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{.AnalyticsID}}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '{{.AnalyticsID}}');
-</script>
+{{- if site.Config.Services.GoogleAnalytics.ID -}}
+{{ template "_internal/google_analytics.html" . }}
 {{- end -}}

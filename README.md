@@ -36,7 +36,6 @@ The following parameters can be defined to customize the theme:
 | smokyWhite         | `#f5f5f5` |
 | sidebarPadding     | `20px`    |
 | educationMain      | `false`   |
-| analyticsID        |           |
 
 For example, if using YAML for your hugo config:
 
