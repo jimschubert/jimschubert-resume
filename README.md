@@ -37,12 +37,12 @@ The following parameters can be defined to customize the theme:
 | sidebarPadding     | `20px`    |
 | educationMain      | `false`   |
 
-For example, if using YAML for your hugo config:
+For example, if using YAML for your hugo config (be sure to wrap CSS colors in quotes!):
 
 ```yaml
 params:
   educationMain: true
-  themeColor: #ececec
+  themeColor: '#ececec'
 ```
 
 The following parameters can be nested under `params.titles` to customize the titles displayed on the resume:
