@@ -1,8 +1,9 @@
-{{- with .Resume.skills -}}
+{{- if .Resume.skills -}}
 <section class="skills-section section">
     <h2 class="section-title"><span class="fa-stack fa-xs"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-rocket fa-stack-1x fa-inverse"></i></span>
-        Skills &amp; Proficiency
+        {{ .Params.titles.skills | default "Skills & Proficiency"}}
     </h2>
+    {{- with .Resume.skills -}}
     {{- if .summary -}}
     <div class="intro">
         {{ .summary | markdownify | safeHTML}}
@@ -17,6 +18,7 @@
             </div>
         </div><!--//item-->
     </div>
+    {{- end -}}
     {{- end -}}
 </section><!--//skills-section-->
 {{- end -}}

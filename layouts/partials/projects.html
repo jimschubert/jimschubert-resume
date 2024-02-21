@@ -1,6 +1,10 @@
-{{- with .Resume.projects -}}
+{{- if .Resume.projects -}}
 <section class="section projects-section">
-    <h2 class="section-title"><span class="fa-stack fa-xs"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-archive fa-stack-1x fa-inverse"></i></span>Projects</h2>
+    <h2 class="section-title">
+        <span class="fa-stack fa-xs"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-archive fa-stack-1x fa-inverse"></i></span>
+        {{ .Params.titles.projects | default "Projects"}}
+    </h2>
+    {{- with .Resume.projects -}}
     {{- if .summary -}}
     <div class="intro">
         {{ .summary | markdownify | safeHTML}}
@@ -11,6 +15,7 @@
         <span class="project-title"><a href="{{ .href }}" target="_blank">{{ .title  | markdownify | safeHTML}}</a></span>
         <span class="project-tagline">{{ .description | markdownify | safeHTML }}</span>
     </div><!--//item-->
+    {{- end -}}
     {{- end -}}
 </section><!--//section-->
 {{- end -}}

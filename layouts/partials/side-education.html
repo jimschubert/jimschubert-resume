@@ -1,5 +1,5 @@
 <div class="education-container container-block">
-    <h2 class="container-block-title">Education</h2>
+    <h2 class="container-block-title">{{ .Params.titles.education | default "Education"}}</h2>
     {{- range $education := .Resume.education -}}
     <div class="item">
         <h4 class="degree">{{ $education.degree  | markdownify | safeHTML}}</h4>

@@ -1,11 +1,10 @@
-{{- $experience := .Resume.experience -}}
-{{- with $experience -}}
+{{- if .Resume.experience -}}
 <section class="section experiences-section">
     <h2 class="section-title">
         <span class="fa-stack fa-xs"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-briefcase fa-stack-1x fa-inverse"></i></span>
-        Experiences
+        {{ .Params.titles.experiences | default "Experiences" }}
     </h2>
-    {{- range $item := . -}}
+    {{- range $item := .Resume.experience -}}
     <div class="item">
         <div class="meta">
             <div class="upper-row">

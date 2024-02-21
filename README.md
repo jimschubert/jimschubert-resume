@@ -45,6 +45,27 @@ params:
   themeColor: #ececec
 ```
 
+The following parameters can be nested under `params.titles` to customize the titles displayed on the resume:
+
+| Param         | Default               |
+|---------------|-----------------------|
+| education     | `Education`           |
+| experiences   | `Experiences`         |
+| projects      | `Projects`            |
+| publications  | `Publications`        |
+| skills        | `Skills & Proficiency`|
+| experiences   | `Experiences`         |
+| summary       | `Career Profile`      |
+
+For example, if using YAML for your hugo config you could modify `skills` nad `experiences` like this:
+
+```yaml
+params:
+  titles:
+    skills: Knowledge
+    experiences: Job History
+```
+
 # License
 
 The Hugo theme itself is [licensed](./LICENSE) under Apache 2.0.
