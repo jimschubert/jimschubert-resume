@@ -4,9 +4,23 @@
 
 This is a dead-simple resume template. It wraps the free [Orbit theme](https://github.com/xriley/Orbit-Theme) by Xiaoying Riley into a Hugo template.
 
-To use in your project, follow the Hugo instructions for initializing and referencing a theme.
+To use in your project, follow the Hugo instructions for initializing and referencing a theme. These assume you're not on Windows (I don't use it, sorry).
 
-For example, as a submodule:
+## Use: as a Hugo module
+
+This is the step I prefer.
+
+```shell
+hugo new site quickstart
+cd quickstart
+hugo mod get github.com/jimschubert/jimschubert-resume
+cp $(go env GOMODCACHE)/github.com/jimschubert/jimschubert-resume*/exampleSite/data/content.yaml data/content.yaml
+```
+
+## Use: as a submodule
+
+If you don't want to reference the theme via Hugo modules, follow these steps instead.
+This is the step you often see on themes. I don't like git's submodules functionality, but you do you.
 
 ```shell
 hugo new site quickstart
@@ -16,6 +30,8 @@ git submodule add https://github.com/jimschubert/jimschubert-resume.git themes/j
 echo "theme = 'jimschubert-resume'" >> hugo.toml
 cp themes/jimschubert-resume/exampleSite/data/content.yaml data/content.yaml
 ```
+
+## Make it yours
 
 Next, edit the file at `data/content.yaml` to your liking.
 Be sure to also create `assets/images/profile.png` (unless you look a lot like me).
