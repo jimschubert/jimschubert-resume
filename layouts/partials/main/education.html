@@ -1,0 +1,26 @@
+{{- with hugo.Data.content.education -}}
+<div class="main__divider" role="separator"></div>
+<section class="main__section" aria-label="Education">
+  <h2 class="main__section-label">{{ $.Site.Params.titles.education | default "Education" }}</h2>
+  {{- range . -}}
+  <article class="education__entry">
+    <div class="education__header">
+      <h3 class="education__title">{{ .institution }}</h3>
+      {{- with .date -}}
+      <span class="education__date">{{ . }}</span>
+      {{- end -}}
+    </div>
+    <p class="education__meta">
+      {{- .degree -}}{{- with .concentration }} · {{ . }}{{- end -}}{{- with .gpa }} · GPA {{ . }}{{- end -}}
+    </p>
+    {{- with .honors -}}
+    <ul class="education__honors">
+      {{- range . -}}
+      <li>{{ . | markdownify }}</li>
+      {{- end -}}
+    </ul>
+    {{- end -}}
+  </article>
+  {{- end -}}
+</section>
+{{- end -}}

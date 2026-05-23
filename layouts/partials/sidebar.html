@@ -1,0 +1,95 @@
+{{- $d := hugo.Data.content -}}
+{{- $photo := $d.profile.photo -}}
+{{- $photoResource := resources.GetMatch "images/profile.png" -}}
+<aside class="resume__sidebar" aria-label="Profile and contact">
+  <div class="sidebar__profile">
+    {{- if $photo -}}
+    <div class="sidebar__photo">
+      <img src="{{ $photo | relURL }}" alt="{{ $d.profile.name }}" width="72" height="72">
+    </div>
+    {{- else if $photoResource -}}
+      {{- $resized := $photoResource.Fill "144x144 center" -}}
+    <div class="sidebar__photo">
+      <img src="{{ $resized.RelPermalink }}" alt="{{ $d.profile.name }}" width="72" height="72">
+    </div>
+    {{- else -}}
+    <div class="sidebar__photo sidebar__photo--placeholder" aria-hidden="true">
+      <i class="ti ti-user"></i>
+    </div>
+    {{- end -}}
+    <p class="sidebar__name">{{ $d.profile.name }}</p>
+    <p class="sidebar__title">{{ or $d.profile.tagline $d.profile.title }}</p>
+  </div>
+
+  <div class="sidebar__divider" role="separator"></div>
+  <section class="sidebar__section" aria-label="Contact">
+    <h2 class="sidebar__section-label">{{ .Site.Params.titles.contact | default "Contact" }}</h2>
+    <ul class="sidebar__links" role="list">
+      {{- with $d.profile.email -}}
+      <li class="sidebar__link">
+        <i class="ti ti-mail" aria-hidden="true"></i>
+        <a href="mailto:{{ . }}">{{ . }}</a>
+      </li>
+      {{- end -}}
+      {{- range $d.profile.links -}}
+      <li class="sidebar__link">
+        <i class="ti {{ .icon }}" aria-hidden="true"></i>
+        {{- if .url -}}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }}</a>
+        {{- else -}}
+        <span>{{ .label }}</span>
+        {{- end -}}
+      </li>
+      {{- end -}}
+    </ul>
+  </section>
+
+  {{- if not .Site.Params.educationMain -}}
+  {{- with $d.education -}}
+  <div class="sidebar__divider" role="separator"></div>
+  <section class="sidebar__section" aria-label="Education">
+    <h2 class="sidebar__section-label">{{ $.Site.Params.titles.education | default "Education" }}</h2>
+    {{- range . -}}
+    <div class="sidebar__edu-entry">
+      <p class="sidebar__edu-degree">{{ .degree }}</p>
+      <p class="sidebar__edu-meta">{{ .institution }}</p>
+      {{- if .gpa -}}
+      <p class="sidebar__edu-meta">{{ .gpa }} GPA{{- with .date }} · {{ . }}{{- end }}</p>
+      {{- else -}}
+        {{- with .date -}}
+      <p class="sidebar__edu-meta sidebar__edu-meta--dim">{{ . }}</p>
+        {{- end -}}
+      {{- end -}}
+    </div>
+    {{- end -}}
+  </section>
+  {{- end -}}
+  {{- end -}}
+
+  {{- with $d.languages -}}
+  <div class="sidebar__divider" role="separator"></div>
+  <section class="sidebar__section" aria-label="Languages">
+    <h2 class="sidebar__section-label">{{ $.Site.Params.titles.languages | default "Languages" }}</h2>
+    <ul class="sidebar__lang-list" role="list">
+      {{- range . -}}
+      <li class="sidebar__lang-item">
+        <span class="sidebar__lang-name">{{ .name }}</span>
+        <span class="sidebar__lang-level">{{ .level }}</span>
+      </li>
+      {{- end -}}
+    </ul>
+  </section>
+  {{- end -}}
+
+  {{- with $d.interests -}}
+  <div class="sidebar__divider" role="separator"></div>
+  <section class="sidebar__section" aria-label="Interests">
+    <h2 class="sidebar__section-label">{{ $.Site.Params.titles.interests | default "Interests" }}</h2>
+    <ul class="sidebar__tags" role="list">
+      {{- range . -}}
+      <li class="sidebar__tag">{{ . }}</li>
+      {{- end -}}
+    </ul>
+  </section>
+  {{- end -}}
+</aside>

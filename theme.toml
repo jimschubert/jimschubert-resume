@@ -2,10 +2,10 @@
 name = "Jim Schubert's Resume Template"
 license = "Apache-2.0"
 licenselink = "https://github.com/jimschubert/jimschubert-resume/master/LICENSE"
-description = "A modern single-column portfolio resume theme for Hugo."
+description = "A clean two-column Hugo resume theme powered by data/content.yaml."
 homepage = "https://github.com/jimschubert/jimschubert-resume"
-tags = ["portfolio", "resume", "minimal", "single-column"]
-features = ["portfolio", "resume", "theme", "responsive"]
+tags = ["resume", "cv", "portfolio", "two-column"]
+features = ["resume", "theme", "responsive", "scss", "print-friendly"]
 min_version = "0.161.1"
 
 [author]

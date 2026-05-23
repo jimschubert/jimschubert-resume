@@ -1,16 +1,22 @@
-{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" . | toCSS | minify | fingerprint }}
-{{ $site := .Site }}
-{{ $accent := "#5b67f1" }}
-{{ with $site }}
-{{ $accent = or .Params.accentColor .Params.themeColor $accent }}
-{{ end }}
-<head>
-<title>{{ .Title }}</title>
+{{- $content := hugo.Data.content -}}
+{{- $name := or $content.profile.name .Site.Title -}}
+{{- $role := $content.profile.title -}}
+{{- $description := or $content.meta_description ($content.summary | truncate 160 | plainify | htmlEscape) -}}
+{{- $accent := or .Site.Params.accentColor .Site.Params.themeColor "#1D9E75" -}}
+{{- $scss := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "scss/main.rendered.scss" . | toCSS | minify | fingerprint -}}
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ .Description }}">
+<title>{{- if $role -}}{{ $name }} — {{ $role }}{{- else -}}{{ $name }}{{- end -}}</title>
+<meta name="description" content="{{ $description }}">
 <meta name="theme-color" content="{{ $accent }}">
-<link rel="shortcut icon" href="img/favicon.ico">
-<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous" media="screen,print" />
-</head>
+{{- with .Site.Params.canonicalURL -}}
+<link rel="canonical" href="{{ . }}">
+{{- end -}}
+<link rel="shortcut icon" href="{{ "img/favicon.ico" | relURL }}">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css"
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer">
+<link rel="stylesheet" href="{{ $scss.RelPermalink }}" integrity="{{ $scss.Data.Integrity }}" crossorigin="anonymous" media="screen,print">

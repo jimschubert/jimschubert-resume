@@ -1,133 +1,99 @@
-full_name: John Doe
-phone:
-  home: ""
-  cell: 000-000-0000
-email: example@example.com
-title: Sr. Lead Software Engineer
-# Optional: use tagline to display alternate text under your name in the header
-#tagline: Lead Software Engineer
-meta_title: Your Name, Software Engineer
-meta_description: A modern single-column portfolio resume theme for Hugo.
+# Profile
+profile:
+  name: Jim Schubert
+  title: Sr. Lead Software Engineer
+  photo: /img/profile.png
+  email: james.schubert@gmail.com
+  links:
+    - icon: ti-brand-github
+      label: github/jimschubert
+      url: https://github.com/jimschubert
+    - icon: ti-award
+      label: StackOverflow profile
+      url: https://stackoverflow.com/users/2403903/jim-schubert
+    - icon: ti-link
+      label: This resume template
+      url: https://github.com/jimschubert/jimschubert-resume
+
 summary: |
-  Nearly every field _supports_ [markdown](https://daringfireball.net/projects/markdown/).
-  
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-  Condimentum lacinia quis vel eros donec. Sollicitudin tempor id eu nisl nunc mi ipsum faucibus vitae. Orci sagittis eu 
-  volutpat odio facilisis mauris. Rhoncus mattis rhoncus urna neque viverra justo nec.
-  
-  Vulputate odio ut enim blandit volutpat maecenas. Massa vitae tortor condimentum lacinia. Proin nibh nisl condimentum 
-  id venenatis a condimentum vitae. Quam pellentesque nec nam aliquam sem et tortor. Sed adipiscing diam donec adipiscing 
-  tristique. Cras adipiscing enim eu turpis egestas pretium. In nibh mauris cursus mattis molestie. Neque ornare aenean 
-  euismod elementum nisi quis eleifend. Est placerat in egestas erat imperdiet.
-links:
-  - href: https://github.com/jimschubert
-    title: github/jimschubert
-  - href: http://github.com/jimschubert/jimschubert.dev
-    title: This resume template
+  I'm a hands-on Senior Lead Software Engineer with a track record of building
+  platforms and tooling that multiply team capability at scale. I architect
+  systems, drive cross-organizational migrations, and identify the problems that
+  aren't on anyone's roadmap yet — from redesigning event-driven automation
+  platforms to standardizing container supply chains across thousands of repositories.
+
+  I co-founded OpenAPI Generator, now used by thousands of developers worldwide,
+  and continue to build and contribute to open source tooling that reflects my
+  belief that great platforms make other engineers faster and safer. I've recently
+  stepped into a horizontal technical leadership role, working across ~24 engineers
+  and a broad stakeholder network spanning product, program, security, and vendor
+  partnerships.
+
+  Outside of work I enjoy music production, BMX, photography, and the occasional
+  live-coding stream. Always happy to connect with engineers trading stories about
+  hard problems and the solutions that eventually stuck.
+
+experiences:
+  - title: Sr. Lead Software Engineer
+    company: FinTech Company
+    location: Richmond, VA
+    start: Jun 2019
+    highlights:
+      - Redesigned a code automation platform to an event-driven SNS/SQS/DLQ architecture, eliminating processing bottlenecks at scale.
+      - Open-sourced OpenRewrite Docker recipes used to migrate thousands of repositories to distroless hardened images.
+      - Led a large-scale Spring Boot 2 EOL migration across the engineering org.
+      - Horizontal technical leadership across ~24 engineers spanning product, program, security, and vendor partnerships.
+
+opensource:
+  - name: OpenAPI Generator
+    description: "Co-founder · Java, Go, +40 languages"
+    url: https://github.com/OpenAPITools/openapi-generator
+  - name: spray
+    description: "DSL and stencil tooling · Go"
+    url: https://github.com/jimschubert/spray
+  - name: honk
+    description: "Terminal Vim learning game · Go (Bubble Tea)"
+    url: https://github.com/jimschubert/honk
+  - name: frill
+    description: "Code screenshot generator · Go"
+    url: https://github.com/jimschubert/frill
+
+education:
+  - degree: B.S. in Information Systems
+    institution: Virginia Commonwealth University
+    concentration: Application Development
+    gpa: "3.98"
+    date: May 2009
+    honors:
+      - "Academic Achievement Award, Spring/Fall 2006, Spring 2007"
+      - "William O. Edwards Scholarship for Merit, 2007–2008, 2008–2009"
+      - "Student of the Year Award, Information Systems, VCU School of Business, April 2009"
+      - Member, Beta Gamma Sigma International Business Honor Society
+      - Member, Phi Kappa Phi Honor Society
+
 languages:
   - name: English
-    proficiency: Native
-  - name: Bri'ish English
-    proficiency: Classroom
+    level: Native
+  - name: Russian
+    level: Classroom
+
 interests:
-  - Coding
-  - Coding
-  - Coding
-  - Coding
-education:
-  - institution: Generic University
-    location: Anywhere, USA
-    degree: B.S. in Awesome
-    graduation_date: May 2009
-    major: a cras semper
-    gpa: 4.0
-    honors:
-      - mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus
-experience:
-  - from: June 2019
-    to: Present
-    title: Sr. Lead Software Engineer
-    company: ACME, inc.
-    location: Anywhere, USA
-    bullets:
-      - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      - Pellentesque habitant morbi tristique senectus et netus.
-      - Amet tellus cras adipiscing enim.
-      - Cras sed felis eget velit aliquet sagittis id.
-      - Ac odio tempor orci dapibus.
-      - Nec tincidunt praesent semper feugiat nibh.
-      - Blandit cursus risus at ultrices mi tempus imperdiet nulla.
-    # not used in default templates
-    technologies:
-      - Java
-      - Maven
-      - Go
-      - Groovy
-      - Python
-      - Terraform
-    # not used in default templates
-    tools:
-      - IntelliJ
-      - Docker
-      - GitHub
-      - Visual Studio Code
+  - Open source
+  - Music production
+  - BMX
+  - Photography
+  - Live coding
 
-  - from: Jan 2015
-    to: June 2019
-    title: Lead Software Engineer
-    company: ACME, inc.
-    location: Anywhere, USA
-    bullets:
-      - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      - Pellentesque habitant morbi tristique senectus et netus.
-      - Amet tellus cras adipiscing enim.
-      - Cras sed felis eget velit aliquet sagittis id.
-      - Ac odio tempor orci dapibus.
-      - Nec tincidunt praesent semper feugiat nibh.
-      - Blandit cursus risus at ultrices mi tempus imperdiet nulla.
-    # not used in default templates
-    technologies:
-      - Java
-      - Maven
-    # not used in default templates
-    tools:
-      - IntelliJ
+# skills:
+#   - name: Go
+#     level: Expert
+#     percent: 95
+#   - name: Java
+#     level: Proficient
+#     percent: 70
 
-projects:
-  summary: |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    
-    Pellentesque habitant morbi tristique senectus et netus. Amet tellus cras adipiscing enim. Cras sed felis eget velit aliquet sagittis id.
-    
-    Ac odio tempor orci dapibus. Nec tincidunt praesent semper feugiat nibh. Blandit cursus risus at ultrices mi tempus imperdiet nulla.
-  list:
-    - href: https://github.com/jimschubert/changelog
-      title: jimschubert/changelog
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    - href: https://github.com/jimschubert/answer
-      title: jimschubert/answer
-      description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-publications:
-  summary: |
-    A few writing samples, articles, or talks can live here with a short supporting description.
-  list:
-    - url: https://example.com/
-      title: An example written work
-      summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    - url: https://example.com/
-      title: Another example written work
-      summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-skills:
-  summary: ''
-  list:
-    - name: Go ("Golang")
-      rank: 58
-    - name: Java
-      rank: 75
-    - name: Docker
-      rank: 10
-    - name: node.js
-      rank: 45
-    - name: JavaScript
-      rank: 25
+# publications:
+#   - title: "My Published Article"
+#     date: Jan 2024
+#     url: https://example.com/article
+#     description: A short description of what the piece covers.

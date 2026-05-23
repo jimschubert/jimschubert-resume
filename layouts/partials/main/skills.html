@@ -1,0 +1,43 @@
+{{- with hugo.Data.content.skills -}}
+<div class="main__divider" role="separator"></div>
+<section class="main__section" aria-label="Skills">
+  <h2 class="main__section-label">{{ $.Site.Params.titles.skills | default "Skills" }}</h2>
+  <ul class="skills__list" role="list">
+    {{- range . -}}
+    {{- $skill := . -}}
+    {{- $scratch := newScratch -}}
+    {{- $scratch.Set "percent" 0 -}}
+    {{- with or $skill.percent $skill.rank -}}
+      {{- $scratch.Set "percent" (int .) -}}
+    {{- else -}}
+      {{- $level := lower (default "" $skill.level) -}}
+      {{- if eq $level "expert" -}}
+        {{- $scratch.Set "percent" 95 -}}
+      {{- else if eq $level "advanced" -}}
+        {{- $scratch.Set "percent" 85 -}}
+      {{- else if eq $level "proficient" -}}
+        {{- $scratch.Set "percent" 70 -}}
+      {{- else if eq $level "working knowledge" -}}
+        {{- $scratch.Set "percent" 55 -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if lt ($scratch.Get "percent") 0 -}}{{- $scratch.Set "percent" 0 -}}{{- end -}}
+    {{- if gt ($scratch.Get "percent") 100 -}}{{- $scratch.Set "percent" 100 -}}{{- end -}}
+    {{- $percent := $scratch.Get "percent" -}}
+    {{- $label := $skill.level -}}
+    {{- if and (not $label) (gt $percent 0) -}}
+      {{- $label = printf "%d%%" $percent -}}
+    {{- end -}}
+    <li class="skills__item">
+      <span class="skills__name">{{ $skill.name }}</span>
+      <div class="skills__bar" role="img" aria-label="{{ $skill.name }} proficiency{{ with $label }}: {{ . }}{{ end }}">
+        <span class="skills__bar-fill" style="width: {{ $percent }}%"></span>
+        {{- with $label -}}
+        <span class="skills__level">{{ . }}</span>
+        {{- end -}}
+      </div>
+    </li>
+    {{- end -}}
+  </ul>
+</section>
+{{- end -}}

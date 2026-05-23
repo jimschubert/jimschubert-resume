@@ -1,0 +1,22 @@
+{{- with hugo.Data.content.experiences -}}
+<div class="main__divider" role="separator"></div>
+<section class="main__section" aria-label="Experience">
+  <h2 class="main__section-label">{{ $.Site.Params.titles.experiences | default "Experience" }}</h2>
+  {{- range . -}}
+  <article class="experience__entry">
+    <div class="experience__header">
+      <h3 class="experience__title">{{ .title }}</h3>
+      <span class="experience__dates" aria-label="Employment period">{{ .start }} – {{ .end | default "Present" }}</span>
+    </div>
+    <p class="experience__meta">{{ .company }}{{ with .location }} · {{ . }}{{ end }}</p>
+    {{- with .highlights -}}
+    <ul class="experience__highlights">
+      {{- range . -}}
+      <li>{{ . | markdownify }}</li>
+      {{- end -}}
+    </ul>
+    {{- end -}}
+  </article>
+  {{- end -}}
+</section>
+{{- end -}}

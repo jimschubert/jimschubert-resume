@@ -1,24 +1,22 @@
-{{ $data := or (index hugo.Data .Site.Language.Lang).content hugo.Data.content }}
 <!DOCTYPE html>
-<html lang="en">
-{{ partial "head.html" (dict "Title" (or $data.meta_title .Site.Title) "Description" $data.meta_description "Site" .Site) }}
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
 <body>
-<div class="page-shell">
-    <main class="resume">
-        <aside class="resume-sidebar">
-            {{ partial "side-profile" (dict "Resume" $data "Params" .Site.Params) }}
-            {{ partial "side-contact"  (dict "Resume" $data "Params" .Site.Params) }}
-            {{ partial "side-education" (dict "Resume" $data "Params" .Site.Params) }}
-            {{ partial "side-languages" (dict "Resume" $data "Params" .Site.Params) }}
-            {{ partial "side-interests" (dict "Resume" $data "Params" .Site.Params) }}
-        </aside>
-        <div class="resume-main">
-            {{ partial "summary" (dict "Resume" $data "Params" .Site.Params) }}
-            {{ partial "experience" (dict "Resume" $data "Params" .Site.Params) }}
-            {{ partial "projects" (dict "Resume" $data "Params" .Site.Params) }}
-        </div>
-    </main>
-</div>
-{{ partial "analytics" . }}
+  <main class="resume" aria-label="{{ hugo.Data.content.profile.name }} resume">
+    <div class="resume__layout">
+      {{- partial "sidebar.html" . -}}
+      <div class="resume__main" role="region" aria-label="Main content">
+        {{- partial "main/summary.html" . -}}
+        {{- partial "main/experience.html" . -}}
+        {{- if .Site.Params.educationMain -}}{{- partial "main/education.html" . -}}{{- end -}}
+        {{- with hugo.Data.content.opensource -}}{{- partial "main/opensource.html" $ -}}{{- end -}}
+        {{- with hugo.Data.content.skills -}}{{- partial "main/skills.html" $ -}}{{- end -}}
+        {{- with hugo.Data.content.publications -}}{{- partial "main/publications.html" $ -}}{{- end -}}
+      </div>
+    </div>
+  </main>
+  {{- partial "analytics.html" . -}}
 </body>
 </html>

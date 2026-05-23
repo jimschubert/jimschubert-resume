@@ -1,26 +1,24 @@
-{{ $data := or (index hugo.Data .Site.Language.Lang).content hugo.Data.content }}
-{{ .Scratch.Set "data" $data }}
 <!DOCTYPE html>
-<html lang="en">
-{{ partial "head.html" (dict "Title" "Page Not Found" "Description" "Page not found" "Site" .Site) }}
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  {{- partial "head.html" . -}}
+</head>
 <body>
-<div class="page-shell">
-    <main class="resume">
-        <div class="hero">
-            <section class="section section--summary error-page">
-                {{ $image := resources.GetMatch "images/404.png" }}
-                {{ with $image }}
-                {{ $image := $image.Resize "240x240" }}
-                <img src="{{ $image.RelPermalink }}" alt="Page not found" class="error-page__image">
-                {{ else }}
-                <img src="img/404.png" alt="Page not found" class="error-page__image">
-                {{ end }}
-                <h1 class="error-page__title">404</h1>
-                <p class="error-page__lede">This page does not exist or the link is out of date.</p>
-                <p>Use your browser back button or head back to the <a href="/">home page</a>.</p>
-            </section>
-        </div>
-    </main>
-</div>
+  <main class="resume" aria-label="Page not found">
+    <div class="resume__layout resume__layout--single">
+      <section class="error-page">
+        {{- $image := resources.GetMatch "images/404.png" -}}
+        {{- with $image -}}
+          {{- $resized := .Fill "240x240 center" -}}
+        <img src="{{ $resized.RelPermalink }}" alt="Page not found" class="error-page__image" width="240" height="240">
+        {{- else -}}
+        <img src="{{ "img/404.png" | relURL }}" alt="Page not found" class="error-page__image" width="240" height="240">
+        {{- end -}}
+        <h1 class="error-page__title">404</h1>
+        <p class="error-page__lede">This page does not exist or the link is out of date.</p>
+        <p class="error-page__body">Use your browser back button or head back to the <a href="{{ "/" | relURL }}">home page</a>.</p>
+      </section>
+    </div>
+  </main>
 </body>
 </html>
