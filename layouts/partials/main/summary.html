@@ -1,0 +1,8 @@
+{{- with hugo.Data.content.summary -}}
+<section class="main__section" aria-label="Summary">
+  <h2 class="main__section-label">{{ $.Site.Params.titles.summary | default "Summary" }}</h2>
+  <div class="main__prose">
+    {{- . | markdownify -}}
+  </div>
+</section>
+{{- end -}}
