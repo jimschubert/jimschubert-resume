@@ -6,7 +6,7 @@ description = "A Hugo theme built around Xiaoying Riley's free Orbits theme."
 homepage = "https://github.com/jimschubert/jimschubert-resume"
 tags = ["minimal", "resume"]
 features = ["minimal", "resume", "theme", "orbits"]
-min_version = "0.122.0"
+min_version = "0.161.1"
 
 [author]
 name = "Jim Schubert"

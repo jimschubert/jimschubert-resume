@@ -1,4 +1,4 @@
-{{ $data := or (index .Site.Data .Site.Language.Lang).content .Site.Data.content }}
+{{ $data := or (index hugo.Data .Site.Language.Lang).content hugo.Data.content }}
 {{ .Scratch.Set "data" $data }}
 <!DOCTYPE html>
 <html lang="en">

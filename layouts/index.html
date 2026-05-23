@@ -1,4 +1,4 @@
-{{ $data := or (index .Site.Data .Site.Language.Lang).content .Site.Data.content }}
+{{ $data := or (index hugo.Data .Site.Language.Lang).content hugo.Data.content }}
 <!DOCTYPE html>
 <html lang="en">
 {{ partial "head.html" (dict "Title" (or $data.meta_title .Site.Title) "Description" $data.meta_description ) }}
