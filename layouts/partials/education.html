@@ -1,33 +1,30 @@
 {{- if .Params.educationMain -}}
-<section class="section education-section">
-    <h2 class="section-title">
-        <span class="fa-stack fa-xs"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-school fa-stack-1x fa-inverse"></i></span>
-        {{ .Params.titles.education | default "Education"}}
-    </h2>
-    {{- range $education := .Resume.education -}}
-    <div class="item">
-        <div class="meta">
-            <div class="upper-row">
-                <h3 class="job-title">{{ $education.institution  | markdownify | safeHTML}}</h3>
-                <div class="time">{{ or $education.graduation_date $education.dates  | markdownify | safeHTML }}</div>
-            </div><!--//upper-row-->
-            <div class="company">{{ $education.degree  | markdownify | safeHTML}} {{ $education.major | markdownify | safeHTML}}</div>
-        </div><!--//meta-->
-    </div><!--//item-->
-    {{- with $education.honors -}}
-    <div class="item">
-        <div class="meta">
-            <div class="upper-row">
-                Honors
-            </div>
-            <ul class="list-styled honors-list">
-                {{- range $honor := $education.honors -}}
-                <li>{{ . | markdownify | safeHTML}}</li>
+<section class="section">
+    <h2 class="section-title">{{ .Params.titles.education | default "Education" }}</h2>
+    <div class="card-grid">
+        {{- range $education := .Resume.education -}}
+        <article class="support-card">
+            <header class="support-card__header">
+                <div>
+                    <h3 class="support-card__title">{{ $education.institution | markdownify | safeHTML }}</h3>
+                    <p class="support-card__meta">{{ or $education.graduation_date $education.dates | markdownify | safeHTML }}</p>
+                </div>
+            </header>
+            <div class="card-copy">
+                <p>{{ $education.degree | markdownify | safeHTML }}{{ with $education.major }} &middot; {{ . | markdownify | safeHTML }}{{ end }}</p>
+                {{- with $education.gpa -}}
+                <p>GPA: {{ . | markdownify | safeHTML }}</p>
                 {{- end -}}
-            </ul><!--//details-->
-        </div>
+                {{- with $education.honors -}}
+                <ul class="entry-bullets">
+                    {{- range . -}}
+                    <li>{{ . | markdownify | safeHTML }}</li>
+                    {{- end -}}
+                </ul>
+                {{- end -}}
+            </div>
+        </article>
+        {{- end -}}
     </div>
-    {{- end -}}
-    {{- end -}}
-</section><!--//section-->
+</section>
 {{- end -}}

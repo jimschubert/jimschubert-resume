@@ -1,8 +1,11 @@
-<section class="section summary-section">
-    <h2 class="section-title"><span class="fa-stack fa-xs"><i class="fas fa-circle fa-stack-2x"></i><i class="fas fa-user fa-stack-1x fa-inverse"></i></span>
-        {{ .Params.titles.summary | default "Career Profile"}}
-    </h2>
-    <div class="summary">
-        {{- .Resume.summary | markdownify | safeHTML -}}
-    </div><!--//summary-->
-</section><!--//section-->
+{{- with .Resume.summary -}}
+<section class="main-section">
+    <header class="section-header">
+        <span class="section-accent" aria-hidden="true"></span>
+        <h2 class="section-title">{{ $.Params.titles.summary | default "Summary" }}</h2>
+    </header>
+    <div class="summary-copy">
+        {{- . | markdownify | safeHTML -}}
+    </div>
+</section>
+{{- end -}}

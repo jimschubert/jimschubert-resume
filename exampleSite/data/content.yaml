@@ -4,10 +4,10 @@ phone:
   cell: 000-000-0000
 email: example@example.com
 title: Sr. Lead Software Engineer
-# Optional: use tagline to display alternate text under your name in sidebar
+# Optional: use tagline to display alternate text under your name in the header
 #tagline: Lead Software Engineer
 meta_title: Your Name, Software Engineer
-meta_description: A Hugo template created by Jim Schubert, based on the free Orbit theme by Xiaoying Riley.
+meta_description: A modern single-column portfolio resume theme for Hugo.
 summary: |
   Nearly every field _supports_ [markdown](https://daringfireball.net/projects/markdown/).
   
@@ -22,12 +22,8 @@ summary: |
 links:
   - href: https://github.com/jimschubert
     title: github/jimschubert
-    classes: github
-    fontawesome: fa-github
   - href: http://github.com/jimschubert/jimschubert.dev
     title: This resume template
-    classes: github
-    fontawesome: fa-github
 languages:
   - name: English
     proficiency: Native
@@ -112,13 +108,16 @@ projects:
       title: jimschubert/answer
       description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
-written:
-  - url: https://example.com/
-    title: An example written work
-    summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  - url: https://example.com/
-    title: Another example written work
-    summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+publications:
+  summary: |
+    A few writing samples, articles, or talks can live here with a short supporting description.
+  list:
+    - url: https://example.com/
+      title: An example written work
+      summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    - url: https://example.com/
+      title: Another example written work
+      summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 skills:
   summary: ''
   list:

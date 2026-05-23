@@ -2,26 +2,25 @@
 {{ .Scratch.Set "data" $data }}
 <!DOCTYPE html>
 <html lang="en">
-{{ partial "head.html" . }}
+{{ partial "head.html" (dict "Title" "Page Not Found" "Description" "Page not found" "Site" .Site) }}
 <body>
-<div class="wrapper mt-lg-5">
-    <div class="lost-wrapper">
-        {{ $image := resources.GetMatch "images/404.png" }}
-        {{ with $image }}
-        {{ $image := $image.Resize "200x200" }}
-        <img src="{{ $image.RelPermalink }}" alt="Are you lost?" class="rounded-circle">
-        {{ else }}
-        <img src="img/404.png" alt="Are you lost?" class="rounded-circle">
-        {{ end }}
-    </div>
-    <div class="main-wrapper">
-    <h1>404 <i class="fa-solid fa-person-circle-question"></i></h1>
-    <p class="bg-warning lead">Oops! Looks like you took a wrong turn.</p>
-
-    <p>Either this page doesn't exist or you're lost in the vastness of <strong>cyberspace</strong>.</p>
-
-    <p>Don't worry, just hit the back button or try navigating to the <a href="/">home page</a>.</p>
-    </div>
+<div class="page-shell">
+    <main class="resume">
+        <div class="hero">
+            <section class="section section--summary error-page">
+                {{ $image := resources.GetMatch "images/404.png" }}
+                {{ with $image }}
+                {{ $image := $image.Resize "240x240" }}
+                <img src="{{ $image.RelPermalink }}" alt="Page not found" class="error-page__image">
+                {{ else }}
+                <img src="img/404.png" alt="Page not found" class="error-page__image">
+                {{ end }}
+                <h1 class="error-page__title">404</h1>
+                <p class="error-page__lede">This page does not exist or the link is out of date.</p>
+                <p>Use your browser back button or head back to the <a href="/">home page</a>.</p>
+            </section>
+        </div>
+    </main>
 </div>
 </body>
 </html>

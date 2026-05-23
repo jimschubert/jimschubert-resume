@@ -1,11 +1,15 @@
-<div class="profile-container">
+<div class="sidebar-profile">
     {{- $image := resources.GetMatch "images/profile.png" -}}
     {{- with $image -}}
-    {{- $image := $image.Resize "100x100" -}}
-    <img class="profile rounded-circle" src="{{ $image.RelPermalink }}" alt="profile photo" />
+    {{- $image := $image.Resize "256x256" -}}
+    <img class="profile" src="{{ $image.RelPermalink }}" alt="Profile photo" />
     {{- else -}}
-    <img class="profile rounded-circle" src="img/profile.png" alt="profile photo default (replace me)" />
+    <img class="profile" src="img/profile.png" alt="Profile photo placeholder" />
     {{- end -}}
-    <h1 class="name">{{.Resume.full_name | markdownify | safeHTML}}</h1>
-    <h3 class="tagline">{{or .Resume.tagline .Resume.title | markdownify | safeHTML}}</h3>
-</div><!--//profile-container-->
+    <div>
+        <h1 class="sidebar-name">{{ .Resume.full_name | markdownify | safeHTML }}</h1>
+        {{- with (or .Resume.tagline .Resume.title) -}}
+        <p class="sidebar-title">{{ . | markdownify | safeHTML }}</p>
+        {{- end -}}
+    </div>
+</div>

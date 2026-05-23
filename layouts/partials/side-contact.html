@@ -1,14 +1,46 @@
-<div class="contact-container container-block">
-    <ul class="list-unstyled contact-list">
+{{- if or .Resume.email .Resume.phone .Resume.links -}}
+<section class="sidebar-section">
+    <h2 class="sidebar-section-title">{{ .Params.titles.contact | default "Contact" }}</h2>
+    <ul class="sidebar-list contact-list">
         {{- with .Resume.email -}}
-        <li class="email"><i class="fas fa-envelope"></i><a href="mailto:{{.}}">{{.}}</a></li>
+        <li class="contact-item">
+            <a href="mailto:{{ . }}">
+                {{ partial "sidebar-icon.html" "email" }}
+                <span class="contact-text">{{ . }}</span>
+            </a>
+        </li>
         {{- end -}}
         {{- with $phone := .Resume.phone -}}
-        {{ with $phone.home }}<li class="phone"><i class="fas fa-phone"></i><a href="tel:{{ $phone.home }}">{{ $phone.home | markdownify | safeHTML}} (H)</a></li>{{ end -}}
-        {{ with $phone.cell }}<li class="phone"><i class="fas fa-phone"></i><a href="tel:{{ $phone.cell }}">{{ $phone.cell | markdownify | safeHTML}} (C)</a></li>{{ end -}}
+        {{ with $phone.home }}
+        <li class="contact-item">
+            <a href="tel:{{ $phone.home }}">
+                {{ partial "sidebar-icon.html" "phone" }}
+                <span class="contact-text">{{ $phone.home | markdownify | safeHTML }}</span>
+            </a>
+        </li>
+        {{ end -}}
+        {{ with $phone.cell }}
+        <li class="contact-item">
+            <a href="tel:{{ $phone.cell }}">
+                {{ partial "sidebar-icon.html" "phone" }}
+                <span class="contact-text">{{ $phone.cell | markdownify | safeHTML }}</span>
+            </a>
+        </li>
+        {{ end -}}
         {{- end -}}
-        {{- range .Resume.links -}}
-        <li class="{{ .classes }}"><i class="fas fa-brands {{ .fontawesome }}"></i><a href="{{ .href }}" target="_blank">{{ .title  | markdownify | safeHTML}}</a></li>
+        {{- range $link := .Resume.links -}}
+        {{- $icon := "link" -}}
+        {{- $href := lower $link.href -}}
+        {{- if in $href "github.com" -}}
+        {{- $icon = "github" -}}
+        {{- end -}}
+        <li class="contact-item">
+            <a href="{{ $link.href }}" target="_blank" rel="noreferrer">
+                {{ partial "sidebar-icon.html" $icon }}
+                <span class="contact-text">{{ $link.title | markdownify | safeHTML }}</span>
+            </a>
+        </li>
         {{- end -}}
     </ul>
-</div><!--//contact-container-->
+</section>
+{{- end -}}

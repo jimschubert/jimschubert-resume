@@ -1,10 +1,13 @@
 {{- if .Resume.languages -}}
-<div class="languages-container container-block">
-    <h2 class="container-block-title">{{ .Params.titles.languages | default "Languages" }}</h2>
-    <ul class="list-unstyled interests-list">
+<section class="sidebar-section">
+    <h2 class="sidebar-section-title">{{ .Params.titles.languages | default "Languages" }}</h2>
+    <ul class="sidebar-list language-list">
         {{- range $language := .Resume.languages -}}
-        <li>{{ $language.name  | markdownify | safeHTML}}{{ with $language.proficiency }}<span class="lang-desc"> ({{ .  | markdownify | safeHTML}})</span>{{ end }}</li>
+        <li class="language-item">
+            <span class="sidebar-emphasis">{{ $language.name | markdownify | safeHTML }}</span>
+            {{ with $language.proficiency }}<span class="language-proficiency">{{ . | markdownify | safeHTML }}</span>{{ end }}
+        </li>
         {{- end -}}
     </ul>
-</div><!--//languages-->
+</section>
 {{- end -}}

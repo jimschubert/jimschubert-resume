@@ -2,7 +2,7 @@
 
 > The job search sucks, your resume shouldn't.
 
-This is a dead-simple resume template. It wraps the free [Orbit theme](https://github.com/xriley/Orbit-Theme) by Xiaoying Riley into a Hugo template.
+This is a modern single-column portfolio resume theme for Hugo. It is designed to stay lightweight: custom SCSS, no Bootstrap dependency, and no runtime JavaScript.
 
 To use in your project, follow the Hugo instructions for initializing and referencing a theme. These assume you're not on Windows (I don't use it, sorry).
 
@@ -36,30 +36,42 @@ cp themes/jimschubert-resume/exampleSite/data/content.yaml data/content.yaml
 Next, edit the file at `data/content.yaml` to your liking.
 Be sure to also create `assets/images/profile.png` (unless you look a lot like me).
 
+To preview the bundled example site from this repository:
+
+```shell
+cd exampleSite
+hugo server --themesDir ../.. --theme jimschubert-resume
+```
+
 ## Parameters
 
 The following parameters can be defined to customize the theme:
 
-| Param              | Default   |
-|--------------------|-----------|
-| themeColor         | `#4B6A78` |
-| textColor          | `#3F4650` |
-| textColorSecondary | `#545E6C` |
-| textGrey           | `#97AAC3` |
-| divider            | `#e8e8e8` |
-| lighterGrey        | `#ccc`    |
-| darkerGrey         | `#666`    |
-| smokyWhite         | `#f5f5f5` |
-| sidebarPadding     | `20px`    |
-| educationMain      | `false`   |
+| Param             | Default    |
+|-------------------|------------|
+| accentColor       | `#5b67f1`  |
+| accentColorStrong | `#4338ca`  |
+| backgroundColor   | `#f3f6fb`  |
+| surfaceColor      | `#ffffff`  |
+| surfaceMutedColor | `#f8faff`  |
+| textColor         | `#0f172a`  |
+| mutedColor        | `#475569`  |
+| borderColor       | `#d8e1ee`  |
+| tagBackground     | `#eef2ff`  |
+| pageWidth         | `980px`    |
+| educationMain     | `false`    |
 
 For example, if using YAML for your hugo config (be sure to wrap CSS colors in quotes!):
 
 ```yaml
 params:
   educationMain: true
-  themeColor: '#ececec'
+  accentColor: '#0f766e'
+  accentColorStrong: '#115e59'
+  backgroundColor: '#f0fdfa'
 ```
+
+`themeColor`, `textColor`, `textColorSecondary`, and `divider` are still recognized as fallbacks for older configs, but the new color parameters are the preferred v2 interface.
 
 The following parameters can be nested under `params.titles` to customize the titles displayed on the resume:
 
@@ -70,10 +82,11 @@ The following parameters can be nested under `params.titles` to customize the ti
 | projects      | `Projects`            |
 | publications  | `Publications`        |
 | skills        | `Skills & Proficiency`|
-| experiences   | `Experiences`         |
-| summary       | `Career Profile`      |
+| languages     | `Languages`           |
+| interests     | `Interests`           |
+| summary       | `Profile`             |
 
-For example, if using YAML for your hugo config you could modify `skills` nad `experiences` like this:
+For example, if using YAML for your hugo config you could modify `skills` and `experiences` like this:
 
 ```yaml
 params:
@@ -183,10 +196,4 @@ Here are my settings for a second domain of mine:
 
 # License
 
-The Hugo theme itself is [licensed](./LICENSE) under Apache 2.0.
-
-The [Orbit theme's license](https://github.com/xriley/Orbit-Theme?tab=readme-ov-file#author--license) is reproduced below:
-
-> This Bootstrap template is made by UX/UI designer [Xiaoying Riley](https://twitter.com/3rdwave_themes) for developers and is 100% FREE as long as you **keep the footer attribution link**. You do not have the rights to resell, sublicense or redistribute (even for free) the template on its own or as a separate attachment from any of your work.
->
-> If you'd like to **use the template without the attribution link**, you can [buy the **commercial license** via the theme website](https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/)
+This theme is [licensed](./LICENSE) under Apache 2.0.
